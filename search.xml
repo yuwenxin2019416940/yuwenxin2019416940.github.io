@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>centos下安装python3.7</title>
+      <link href="/2021/10/18/centos%E4%B8%8B%E5%AE%89%E8%A3%85python3.7/"/>
+      <url>/2021/10/18/centos%E4%B8%8B%E5%AE%89%E8%A3%85python3.7/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、安装依赖包"><a href="#一、安装依赖包" class="headerlink" title="一、安装依赖包"></a>一、安装依赖包</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install openssl-devel   -y</span><br><span class="line"> </span><br><span class="line">yum install zlib-devel  -y</span><br><span class="line"> </span><br><span class="line">yum install gcc -y</span><br></pre></td></tr></table></figure><h2 id="二、再执行安装一个工具，不安装会导致pip安装失败"><a href="#二、再执行安装一个工具，不安装会导致pip安装失败" class="headerlink" title="二、再执行安装一个工具，不安装会导致pip安装失败"></a>二、再执行安装一个工具，不安装会导致pip安装失败</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install libffi-devel -y</span><br></pre></td></tr></table></figure><h2 id="三、安装wget"><a href="#三、安装wget" class="headerlink" title="三、安装wget"></a>三、安装wget</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install wget</span><br></pre></td></tr></table></figure><h2 id="四、下载python3-7的包"><a href="#四、下载python3-7的包" class="headerlink" title="四、下载python3.7的包"></a>四、下载python3.7的包</h2><p>有两种方法，一种是从官网下载，然后上传到CentOS上，另一种可以通过CentOS的wget命令直接下载。两者都可以。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz</span><br></pre></td></tr></table></figure><h2 id="五、安装Python3-7-0，依次执行下列代码即可"><a href="#五、安装Python3-7-0，依次执行下列代码即可" class="headerlink" title="五、安装Python3.7.0，依次执行下列代码即可"></a>五、安装Python3.7.0，依次执行下列代码即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf Python-3.7.0.tgz</span><br><span class="line"> </span><br><span class="line">cd Python-3.7.0</span><br><span class="line"> </span><br><span class="line">./configure    </span><br><span class="line"> </span><br><span class="line">make&amp;&amp;make install</span><br></pre></td></tr></table></figure><p>注意：</p><ol><li>./configure：测试配置环境</li><li>make是编译的意思。就是把源码包编译成二进制可执行文件</li><li>make install 就是安装的意思</li><li>make &amp;&amp; makeinstall的意思就是执行make如果没有发生错误就执行make install</li><li>如果出现了“ModuleNotFound：No module named ‘_ctypes’”报错，那就是你漏了第二步！！！</li></ol><h2 id="六、配置环境变量"><a href="#六、配置环境变量" class="headerlink" title="六、配置环境变量"></a>六、配置环境变量</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv /usr/bin/python /usr/bin/python.bak</span><br><span class="line"> </span><br><span class="line">ln -s /usr/local/bin/python3 /usr/bin/python</span><br><span class="line"> </span><br><span class="line">mv /usr/bin/pip /usr/bin/pip.bak</span><br><span class="line"> </span><br><span class="line">ln -s /usr/local/bin/pip3 /usr/bin/pip</span><br></pre></td></tr></table></figure><p>注：执行第三条指令时我的系统里提示/usr/bin/pip不存在，但不执行该指令也不会报错</p><h2 id="七、验证安装是否正确"><a href="#七、验证安装是否正确" class="headerlink" title="七、验证安装是否正确"></a>七、验证安装是否正确</h2><ol><li>验证python，如果显示的版本号是3.7.0，就代表安装成功了（CentOS会自带一个python2.7)    python –version</li><li>验证pip，看看pip的版本号是不是10.0.1，以及最后括号里是不是3.7  pip –version</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spark </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spark Python 虚拟机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>一个简单的Spark实例</title>
+      <link href="/2021/10/18/%E4%B8%80%E3%80%81%E9%85%8D%E7%BD%AEwindows%E4%B8%8B%E7%9A%84Hadoop%E5%92%8CSpark%E7%8E%AF%E5%A2%83/"/>
+      <url>/2021/10/18/%E4%B8%80%E3%80%81%E9%85%8D%E7%BD%AEwindows%E4%B8%8B%E7%9A%84Hadoop%E5%92%8CSpark%E7%8E%AF%E5%A2%83/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、配置windows下的Hadoop和Spark环境"><a href="#一、配置windows下的Hadoop和Spark环境" class="headerlink" title="一、配置windows下的Hadoop和Spark环境"></a>一、配置windows下的Hadoop和Spark环境</h2><h6 id="1-安装JDK1-8"><a href="#1-安装JDK1-8" class="headerlink" title="1. 安装JDK1.8"></a>1. 安装JDK1.8</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java --version</span><br></pre></td></tr></table></figure><h6 id="2-下载hadoop，spark安装包，-解压-路径中尽量不要含义中文和空格"><a href="#2-下载hadoop，spark安装包，-解压-路径中尽量不要含义中文和空格" class="headerlink" title="2.下载hadoop，spark安装包， 解压,[路径中尽量不要含义中文和空格]"></a>2.下载hadoop，spark安装包， 解压,[路径中尽量不要含义中文和空格]</h6><h6 id="3-设置环境变量"><a href="#3-设置环境变量" class="headerlink" title="3.设置环境变量"></a>3.设置环境变量</h6><ol><li>JAVA_HOME,</li><li>HADOOP_HOME,</li><li>SPARK_HOME,</li><li>PATH</li></ol><h6 id="4-下载hadoop-windows-2-7-4-拷贝bin里的所有内容到hadoop的bin目录下覆盖相应的文件"><a href="#4-下载hadoop-windows-2-7-4-拷贝bin里的所有内容到hadoop的bin目录下覆盖相应的文件" class="headerlink" title="4. 下载hadoop-windows-2.7.4 ,拷贝bin里的所有内容到hadoop的bin目录下覆盖相应的文件"></a>4. 下载hadoop-windows-2.7.4 ,拷贝bin里的所有内容到hadoop的bin目录下覆盖相应的文件</h6><h2 id="二、配置pySpark的开发环境"><a href="#二、配置pySpark的开发环境" class="headerlink" title="二、配置pySpark的开发环境"></a>二、配置pySpark的开发环境</h2><ol><li><p>由于spark-2.4.3只适用于python3.6版本一下，我们用acaconda来安装python3.6版本</p><p>打开anaconda Navigation创建新的环境，选择python3.6版本</p></li><li><p>将spark/python/pyspark拷贝到/Anaconda/envs/spark/Lib/site-packages</p></li><li><p>打开Anacond Prompt 激活环境</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda activate spark</span><br></pre></td></tr></table></figure><p>打开Pycharm创建new project</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spark </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spark </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Nodejs+Git+Hexo搭建自己的博客</title>
       <link href="/2021/10/13/new-article/"/>
       <url>/2021/10/13/new-article/</url>
